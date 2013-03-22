@@ -58,5 +58,5 @@ text() { #{{{
 	tput sgr0
 } #}}}
 
-alias grep='grep --colour=auto'
+alias grep='grep -n'
 alias ls='ls -l'
