@@ -21,11 +21,20 @@ commit(){
 
 	if(svn ci -qm "$files" $args); then
 		printf "Result: [%s]\n" $(text green "OK")
-		#printf "Files Updated: $(text yellow $args)\n"
-		#notify-send "Success" "amadeus AMADEUS amadeus AMADEUS amadeus AMADEUS"
+		
+		if(terminal-notifier); then
+			terminal-notifier -message "Commit succeeded" -title "SVN - Success"
+		else 
+			notify-send "Success" "amadeus AMADEUS amadeus AMADEUS amadeus AMADEUS"
+		fi
 	else
 		printf "Result: [%s]\n" $(text red "ERROR")
-		#notify-send "Error" "An error occurred sending your commit."
+
+		if(terminal-notifier); then
+			terminal-notifier -message "An error occurred sending your commit" -title "SVN - Error"
+		else 
+			notify-send "Error" "An error occurred sending your commit."
+		fi
 	fi
 }
 
