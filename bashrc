@@ -67,6 +67,17 @@ text() { #{{{
 	tput sgr0
 } #}}}
 
+passwordr(){
+	LEN="$2";
+
+	if [ -z "$2" ]; then
+			LEN="32";
+	fi
+
+	/Users/prieber/Sites/PyPasswordr/passwordr.py $1 $LEN
+}
+
 alias grep='grep -n'
 alias ls='ls -l'
-PS1='\[\033[01;32m\]\w \$\[\033[00m\] '
+#PS1='\[\033[01;32m\]\w \$\[\033[00m\] ' #OLD PS1
+PS1="\[\033[36m\]\u\[\033[m\]@\[\033[33;1m\]\w\[\033[m\]\$ " #NEW PS1
